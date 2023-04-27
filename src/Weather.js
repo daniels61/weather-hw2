@@ -13,7 +13,7 @@ class Weather extends Component {
 
   componentDidMount() {
     const name = this.state.name;
-    const apiKey = '4553536ba9afc39f3c4f1d3d660a5f14';
+    const apiKey = '<your API key>';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&appid=${apiKey}`
     axios.get(url)
       .then(res => {
