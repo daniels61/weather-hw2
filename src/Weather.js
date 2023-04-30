@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import App from './App';
 
 class Weather extends Component {
   constructor(props) {
@@ -11,19 +10,7 @@ class Weather extends Component {
     };
   }
 
-  componentDidMount() {
-    const name = this.state.name;
-    const apiKey = '<your API key>';
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&appid=${apiKey}`
-    axios.get(url)
-      .then(res => {
-        console.log(res);
-        if (res.status === 200) {
-          const weather = res.data;
-          this.setState({ weather });
-        }
-      });
-  }
+ 
 
   handleSearch = () => {
     const name = this.state.name;
@@ -54,7 +41,11 @@ class Weather extends Component {
           <h1>{name}</h1>
           <div>{weather.main.temp} °C</div>
           <div>Feels Like: {weather.main.feels_like} °C</div>
-          <button onClick={this.handleNewSearch}>New Search</button>
+          <br/>
+          <input type="text" value={name} onChange={(e) => this.setState({ name: e.target.value })} />
+          <br/>
+          <button onClick={this.handleSearch}>Search</button>
+         
 
         </>
       );
@@ -62,7 +53,7 @@ class Weather extends Component {
 
     return (
       <div>
-        <input type="text" value={name}/>
+        <input type="text" value={name} onChange={(e) => this.setState({ name: e.target.value })} />
         <button onClick={this.handleSearch}>Search</button>
       </div>
     );
