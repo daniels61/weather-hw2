@@ -27,11 +27,6 @@ class Weather extends Component {
   }
 
 
-  
-  handleNewSearch = () => {
-    window.location.reload();
-  }
-
   render() {
     const { name, weather } = this.state;
 
